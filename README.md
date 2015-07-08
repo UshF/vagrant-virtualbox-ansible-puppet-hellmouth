@@ -14,4 +14,8 @@ The intent was to experiment with the following:
 DigitalOcean [standalone puppet
 examples|https://www.digitalocean.com/community/tutorials/how-to-install-puppet-in-standalone-mode-on-centos-7] experiments.
 
+3. Investigate the interaction between vagrant\'s manipulation of ssh
+   known\_keys and ansible\'s
+   [inventory|http://docs.ansible.com/guide_vagrant.html] file and various name
+   resolution services on the host.
 
