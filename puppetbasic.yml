@@ -1,0 +1,20 @@
+# vim:ft=ansible:
+---
+- hosts: all 
+  user: vagrant
+  sudo: yes
+  tasks:
+  - name: get puppetlabs release EL7 rpm 
+    yum: name=http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm state=present
+
+  - name: install puppet
+    yum: name=puppet state=present
+
+  - name: create manifest dir if not exist
+    file: path=/etc/puppet/manifests state=directory mode=0755
+
+  - name: create simple manifest
+    template: src=projectname.j2 dest=/etc/puppet/manifests/projectname.pp
+
+  - name: run puppet apply locally
+    shell:  puppet apply --debug /etc/puppet/manifests/projectname.pp
